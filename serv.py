@@ -1,13 +1,20 @@
 import pickle
 import socket
 import struct
-
 import cv2
+#to set an interval
+from time import sleep
+from PIL import ImageGrab
+
+
+from numpy import byte
 
 HOST = ''
-PORT = 8090
-
+#random port
+PORT = 8089
+#tcp connection
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 print('Socket created')
 
 s.bind((HOST, PORT))
@@ -43,3 +50,10 @@ while True:
     # Display
     cv2.imshow('frame', frame)
     cv2.waitKey(1)
+    '''
+    chat=input(">>")
+    inp_mess=bytes(chat,"UTF-8")
+    conn.send(inp_mess)
+    datafromclient=conn.recv(1024)
+    print("Client:",datafromclient.decode())
+'''
